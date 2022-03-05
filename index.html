@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>XÁC ĐỊNH KHU VỰC TÌM KIẾM CỨU NẠN</title>
+    <link rel="stylesheet" href="./src/style.css">
+    <script src="./src/TINHTOAN_TONG HOP_2.js"></script>
+</head>
+    <h1><img src="imgs/logoHQ.gif" style="height: 35px;"> XÁC ĐỊNH KHU VỰC TÌM KIẾM CỨU NẠN  <img src="imgs/logoCSB.gif" style="height: 35px;"></h1>
+<body>
+    <form name="input_form" action="javascript:validate();">
+        <table border="1">
+            <tr>
+                <th colspan="5" bgcolor="aqua"> <h3>BẢNG TÍNH: KHU VỰC TÌM KIẾM XÁC SUẤT</h3>
+                    <div id="current-time"></div>
+                    <script>
+                        var curDate = new Date();
+                        var time = curDate.getHours() + ":" + curDate.getMinutes();
+                        var curDay = curDate.getDate();
+                        var curMonth = curDate.getMonth()+1;
+                        var curYear = curDate.getFullYear();
+                        document.getElementById('current-time').innerHTML = "Thời gian: " + time + " _ Ngày: " + curDay + "/" + curMonth + "/" + curYear;
+                    </script>
+                </th>
+            </tr>
+            <tr >
+                <th align="left">Tai nạn:</th>
+                <th colspan="4" align="left"><input type="text" size="90" autocomplete="off"></th>
+            </tr>
+            <tr>
+                <th width="190" align="left">Hải đồ:</th>
+                <th colspan="4" align="left"><input type="text" size="90" autocomplete="off"></th>
+            </tr>
+            <tr>
+                <th colspan="5" bgcolor="gainsboro">PHƯƠNG TIỆN TÌM KIẾM</th>
+            </tr>
+            <tr>
+                <th width="190" align="left">Tên:</th>
+                <th colspan="4" align="left"><input type="text" size="90" autocomplete="off"></th>
+            </tr>
+            <!-- Tọa độ tàu tìm kiếm -->
+            <tr>
+                <th align="left">Tọa độ:</th>
+                <th colspan="2" align="left" >
+                    LAT= <input type="text" name="lat_do_ttkterm" size="1" value="16" autocomplete="off"> độ
+                    <input type="text" name="lat_phut_ttkterm" size="1" value="5" autocomplete="off"> phút
+                    <input list="LAT" name="chiso_lat_ttkterm" size="1" value="N" autocomplete="off">
+                    <datalist id="LAT">
+                    <option value="N"></option>
+                    <option value="S"></option>
+                    </datalist>
+                </th>
+                <th colspan="2" align="left">
+                    LONG=  <input type="text" name="long_do_ttkterm" size="1" value="109" autocomplete="off"> độ
+                    <input type="text" name="long_phut_ttkterm" size="1" value="30" autocomplete="off"> phút
+                    <input list="LONG" name="chiso_long_ttkterm" size="1" value="E" autocomplete="off">
+                    <datalist id="LONG">
+                    <option value="E"></option>
+                    <option value="W"></option>
+                    </datalist>
+                </th>
+            </tr>
+            <tr>
+                <th align="left">Tốc độ tìm kiếm:</th>
+                <th colspan="4" align="left">
+                    <input type="text" name="v_tkterm" size="1" value="15" autocomplete="off"> M/h
+                </th>
+            </tr>
+            <!-- Phương tiện hàng hải của phương tiện tìm kiếm -->
+            <tr>
+                <th align="left">Phương tiện hàng hải:</th>
+                <th colspan="4">
+                    <input list="phuongtien_hh1" name="phuongtien_hh1term" size="90" value="GPS" autocomplete="off">
+                    <datalist id="phuongtien_hh1" >
+                        <option value="GPS"></option>
+                        <option value="Radar"></option>
+                        <option value="Quan sát địa văn"></option>
+                        <option value="Quan sát thiên văn"></option>
+                        <option value="Phao vô tuyến hàng hải"></option>
+                        <option value="LORAN C"></option>
+                        <option value="Tàu Hải quân, tàu ngầm Hải quân"></option>
+                        <option value="Tàu biển"></option>
+                    </datalist>
+                </th>
+            </tr>
+            <!-- Mục tiêu -->
+            <tr>
+                <th colspan="5" bgcolor="gainsboro">PHƯƠNG TIỆN BỊ NẠN </th>
+            </tr>
+            <tr>
+                <th width="190" align="left">Tên:</th>
+                <th colspan="4" align="left"><input type="text" name="tenPTBNterm" size="90" autocomplete="off"></th>
+            </tr>
+            <tr>
+                <th width="190" align="left">Loại mục tiêu:</th>
+                <th colspan="4" align="left">
+                    <input list="muctieu_tk" name="muctieu_tkterm" size="90" value="Thuyền đánh cá thương mại" autocomplete="off">
+                    <datalist id="muctieu_tk" >
+                        <option value="Người rơi xuống nước"></option>
+                        <option value="Người rơi xuống nước thẳng đứng"></option>
+                        <option value="Người rơi xuống nước tư thế ngồi"></option>
+                        <option value="Người rơi xuống nước nằm ngang, mặc đồ cứu sinh"></option>
+                        <option value="Người rơi xuống nước nằm ngang, mặc đồ lặn"></option>
+                        <option value="Người rơi xuống nước đã chết"></option>
+                        <option value="Xuồng cứu sinh không có hệ thống balát"></option>
+                        <option value="Xuồng cứu sinh không balát, không mái che, không neo nổi"></option>
+                        <option value="Xuồng cứu sinh không balát, không mái che, có neo nổi"></option>
+                        <option value="Xuồng cứu sinh không balát, có mái che, không neo nổi"></option>
+                        <option value="Xuồng cứu sinh không balát, có mái che, có neo nổi"></option>
+                        <option value="Xuồng cứu sinh hệ thống balát nông và có mái che"></option>
+                        <option value="Xuồng cứu sinh hệ thống balát nông, có mái che, không neo nổi"></option>
+                        <option value="Xuồng cứu sinh hệ thống balát nông, có mái che, có neo nổi"></option>
+                        <option value="Xuồng cứu sinh hệ thống balát nông, có mái che, bị lật"></option>
+                        <option value="Xuồng cứu sinh hệ thống balát sâu và có mái che"></option>
+                        <option value="Xuồng nhỏ"></option>
+                        <option value="Xuồng cứu sinh của USCG"></option>
+                        <option value="Xuồng cứu sinh hàng không, không balát, có neo nổi (4-6 người)"></option>
+                        <option value="Xuồng cứu sinh hàng không, không balát, có neo nổi (46 người)"></option>
+                        <option value="Xuồng chèo biển có người"></option>
+                        <option value="Xuồng chèo tay ván lướt có người"></option>
+                        <option value="Xuồng chèo tay ván buồm có người"></option>
+                        <option value="Thuyền buồm, một thân, đáy liền, mớn nước sâu"></option>
+                        <option value="Thuyền buồm, một thân, đáy cánh, mớn nước nông"></option>
+                        <option value="Thuyền máy-xuồng nhỏ, đáy bằng"></option>
+                        <option value="Thuyền máy-xuồng nhỏ, đáy chữ V, ĐK chuẩn"></option>
+                        <option value="Thuyền máy-xuồng nhỏ, đáy chữ V, ngập nước"></option>
+                        <option value="Thuyền máy-xuồng thể thao, cabin trước"></option>
+                        <option value="Thuyền máy-xuồng câu cá thể thao, cabin giữa"></option>
+                        <option value="Thuyền đánh cá thương mại"></option>
+                        <option value="Thuyền máy ba lá"></option>
+                        <option value="Thuyền máy kéo lưới phía sau"></option>
+                        <option value="Thuyền máy lưới dài"></option>
+                        <option value="Thuyền máy lưới đan"></option>
+                        <option value="Thuyền máy ghe mành"></option>
+                        <option value="Thuyền máy vận tải ven biển"></option>
+                        <option value="Các mảnh ván vỡ của tàu cá"></option>
+                        <option value="Thùng đựng đá 1m3"></option>
+                        <option value="Thùng đựng đá 1m3, chất không đầy"></option>
+                        <option value="Thùng đựng đá 1m3, chất đầy"></option>
+                    </datalist>
+                </th>
+            </tr>
+            <!-- LKP -->
+            <tr>
+                <th align="left">LKP:</th>
+                <th colspan="2" align="left" >
+                    LAT= <input type="text" name="lat_doterm" size="1" value="17" autocomplete="off"> độ
+                    <input type="text" name="lat_phutterm" size="1" value="5" autocomplete="off"> phút
+                    <input list="LAT" name="chiso_latterm" size="1" value="N" autocomplete="off">
+                    <datalist id="LAT">
+                    <option value="N"></option>
+                    <option value="S"></option>
+                    </datalist>
+                </th>
+                <th colspan="2" align="left">
+                    LONG=  <input type="text" name="long_doterm" size="1" value="109" autocomplete="off"> độ
+                    <input type="text" name="long_phutterm" size="1" value="30" autocomplete="off"> phút
+                    <input list="LONG" name="chiso_longterm" size="1" value="E" autocomplete="off">
+                    <datalist id="LONG">
+                    <option value="E"></option>
+                    <option value="W"></option>
+                    </datalist>
+                </th>
+            </tr>
+            <!-- Phương vị, khoảng cách mục tiêu -->
+            <tr>
+                <th colspan="1" align="left">Phương vị:</th>
+                <th colspan="4" align="left">
+                    <p id="output_text_PT"></p>
+                </th>
+            </tr>
+            <tr>
+                <th align="left"> Khoảng cách:</th>
+                <th colspan="4" align="left">
+                    <p id="output_text_khoangcach"></p>
+                </th>
+            </tr>
+
+            <!-- Phương tiện hàng hải của mục tiêu -->
+            <tr>
+                <th align="left">Phương tiện hàng hải:</th>
+                <th colspan="4" align="left">
+                    <input list="phuongtien_hh" name="phuongtien_hhterm" size="90" value="GPS" autocomplete="off">
+                    <datalist id="phuongtien_hh" >
+                        <option value="GPS"></option>
+                        <option value="Radar"></option>
+                        <option value="Quan sát địa văn"></option>
+                        <option value="Quan sát thiên văn"></option>
+                        <option value="Phao vô tuyến hàng hải"></option>
+                        <option value="LORAN C"></option>
+                        <option value="Tàu Hải quân, tàu ngầm Hải quân"></option>
+                        <option value="Tàu biển"></option>
+                    </datalist>
+                </th>
+            </tr>
+            <!-- Sai số trôi dạt -->
+            <tr>
+                <th align="left">Sai số trôi dạt:</th>
+                <th colspan="2" align="left">
+                    <input type="text" name="ssterm" size="1" value="12.5" autocomplete="off"> %
+                </th>
+                <!-- Lần tìm kiếm -->
+                <th colspan="2" align="left">Lần tìm kiếm thứ:
+                <input list="lantk" name="lantkterm" size="1" value="1" autocomplete="off">
+                    <datalist id="lantk">
+                        <option value="1"></option>
+                        <option value="2"></option>
+                        <option value="3"></option>
+                        <option value="4"></option>
+                        <option value="5"></option>
+                    </datalist>
+                </th>
+            </tr>
+            <!-- Dòng chảy -->
+            <tr>
+                <th colspan="5" bgcolor="gainsboro">DÒNG CHẢY</th>
+            </tr>
+            <tr>
+                <th align="left">Hướng, vận tốc:</th>
+                <th colspan="1" align="left"> 
+                    Hướng = <input type="text" name="h_dongterm" size="2" value="190" placeholder="0÷360" autocomplete="off"> độ
+                </th>
+                <th colspan="3" align="left">
+                    Vận tốc = <input type="text" name="v_dongterm" size="1" value="1.5" autocomplete="off"> M/h
+                </th>
+            </tr>
+            <tr>
+                <th align="left">Trôi dạt do dòng chảy:</th>
+                <th colspan="4"><p id="output_text_troidatdongchay"></p></th>
+            </tr>
+            <!-- Gió và dòng do gió -->
+            <tr>
+                <th colspan="5" bgcolor="gainsboro">GIÓ VÀ DÒNG CHẢY DO GIÓ</th>
+            </tr>
+            <tr>
+                <th align="left">Hướng, vận tốc:</th>
+                <th align="left"> 
+                    Hướng =  <input type="text" name="h_gioterm" size="2" value="30" placeholder="0÷360" autocomplete="off"> độ
+                </th>
+                <th align="left">
+                    Vận tốc = <input type="text" name="v_gioterm" size="1" value="15" autocomplete="off"> M/h
+                </th>
+                <th colspan="2">Hướng, vận tốc dòng do gió:</th>
+            </tr>
+            <tr>
+                <th align="left">Hướng gió ngược</th>
+                <th colspan="2" align="center"><p id="output_text_gionguoc"></p></th>
+                <th align="center"><p id="output_text_gocdongdogio"></p></th>
+                <th align="center"><p id="output_text_dongdogio"></p></th>
+            </tr>
+            <tr>
+                <th align="left">Trôi dạt do dòng do gió</th>
+                <th colspan="4"><p id="output_text_troidatdongdogio"></p></th>
+            </tr>
+             <!-- Độ dạt gió -->
+             <tr>
+                <th colspan="5" bgcolor="gainsboro">ĐỘ DẠT GIÓ</th>
+            </tr>
+            <tr>
+                <th align="left">Góc dạt gió:</th>
+                <th colspan="4">
+                    <p id="output_text_goclech"></p>
+                </th>
+            </tr>
+            <tr>
+                <th align="left">Hướng độ dạt gió:</th>
+                <th colspan="1" align="left"> LW trái: </th>
+                <th>
+                    <p id="output_text_LWtrai"></p>
+                </th>
+                <th colsapan ="1" width="180" align="left"> LW phải: </th>
+                <th>
+                    <p id="output_text_LWphai"></p>
+               </th>
+            </tr>
+            <tr>
+                <th align="left">Vận tốc dạt gió:</th>
+                <th colspan="4"><p id="output_text_v_datgio"></p></th>
+            </tr>
+            <tr>
+                <th align="left">Khoảng cách dạt gió:</th>
+                <th colspan="4"><p id="output_text_s_datgio"></p></th>
+            </tr>
+            <tr>
+                <th colspan="5" bgcolor="gainsboro">SAI SỐ TRÔI DẠT</th>
+            </tr>
+            <tr>
+                <th align="left">Khoảng cách trái (Dt):</th>
+                <th><p id="output_text_kc_trai"></p></th>
+                <th align="left">Khoảng cách phải (Dp):</th>
+                <th colspan="2"><p id="output_text_kc_phai"></p></th>
+            </tr>
+            <tr>
+                <th align="left">dt (12.5 ÷ 33%Dt):</th>
+                <th><p id="output_text_dt"></p></th>
+                <th align="left">dp (12.5 ÷ 33%Dp):</th>
+                <th colspan="2"><p id="output_text_dp"></p></th>
+            </tr>
+            <tr>
+                <th width="230" align="left">Khoảng cách trái-phải (Dtp):</th>
+                <th><p id="output_text_kc_traiphai"></p></th>
+                <th align="left">De = (dt + dp+ Dtp)/2:</th>
+                <th colspan="2"><p id="output_text_De"></p></th>
+            </tr>
+             <!-- Sai số trong vị trí xác định -->
+             <tr>
+                <th colspan="5" bgcolor="gainsboro">SAI SỐ TRONG VỊ TRÍ XÁC ĐỊNH</th>
+            </tr>
+            <tr>
+                <th colspan="2" align="left">Sai số trong vị trí của người, phương tiện bị nạn (X):</th>
+                <th colspan="3"><p id="output_text_ssPTBN"></p></th>
+            </tr>
+            <tr>
+                <th colspan="2" align="left">Sai số trong vị trí của phương tiện TKCN (Y):</th>
+                <th colspan="3"><p id="output_text_ssPTTKCN"></p></th>
+            </tr>
+            <!-- Tổng các sai số -->
+            <tr>
+                <th colspan="5" bgcolor="gainsboro">TỔNG CÁC SAI SỐ</th>
+            </tr>
+            <tr>
+                <th colspan="2" align="left">Tổng các sai số (E):</th>
+                <th colspan="3"><p id="output_text_tongss"></p></th>
+            </tr>
+            <!-- Khu vực tìm kiếm -->
+            <tr>
+                <th colspan="5" bgcolor="gainsboro">KHU VỰC TÌM KIẾM</th>
+            </tr>
+            <tr>
+                <th colspan="2" align="left">Hệ số an toàn theo các lần tìm kiếm (f):</th>
+                <th colspan="3"><p id="output_text_hesoantoan"></p></th>
+            </tr>
+            <tr>
+                <th colspan="2" align="left">Bán kính khu vực tìm kiếm (R = E.f) (làm tròn):</th>
+                <th colspan="3"><p id="output_text_bankinh"></p></th>
+            </tr>
+            <tr>
+                <th colspan="2" align="left">Diện tích tìm kiếm:</th>
+                <th colspan="3"><p id="output_text_dientich"></p></th>
+            </tr>
+            <tr>
+                <th colspan="2" align="left">Hướng trôi dạt:</th>
+                <th colspan="3"><p id="output_text_huongtroidat"></p></th>
+            </tr>
+            <tr>
+                <th colspan="2" align="left">Thời gian trôi dạt:</th>
+                <th colspan="3"><p id="output_text_thoigiantroidat"></p></th>
+            </tr>
+            <tr>
+                <th colspan="2" align="left">Quãng đường trôi dạt:</th>
+                <th colspan="3"><p id="output_text_quangduongtroidat"></p></th>
+            </tr>
+            <tr>
+                <th colspan="2" align="left">Phương pháp đón đường:</th>
+                <th colspan="3"><p id="output_text_ppdonduong"></p></th>
+            </tr>
+            <tr>
+                <th colspan="2" align="left">Hướng đón đường:</th>
+                <th colspan="3"><p id="output_text_huongdonduong"></p></th>
+            </tr>
+            <tr>
+                <th colspan=""></th>
+                <th colspan="2" bgcolor="gainsboro">Vĩ độ</th>
+                <th colspan="2" bgcolor="gainsboro">Kinh độ</th>
+            </tr>
+            <tr>
+                <th>Tâm vùng tìm kiếm</th>
+                <th colspan="2" align="left"><p id="output_textlat_gap"></p></th>
+                <th colspan="2" align="left"><p id="output_textlong_gap"></p></th>
+            </tr>
+            <tr>
+                <th>Điểm A</th>
+                <th colspan="2" align="left"><p id="output_textlat_A"></p></th>
+                <th colspan="2" align="left"><p id="output_textlong_A"></p></th>
+            </tr>
+            <tr>
+                <th>Điểm B</th>
+                <th colspan="2" align="left"><p id="output_textlat_B"></p></th>
+                <th colspan="2" align="left"><p id="output_textlong_B"></p></th>
+            </tr>
+            <tr>
+                <th>Điểm C</th>
+                <th colspan="2"align="left"><p id="output_textlat_C"></p></th>
+                <th colspan="2"align="left"><p id="output_textlong_C"></p></th>
+            </tr>
+            <tr>
+                <th>Điểm D</th>
+                <th colspan="2" align="left"><p id="output_textlat_D"></p></th>
+                <th colspan="2" align="left"><p id="output_textlong_D"></p></th>
+            </tr>
+            <tr>
+                <th colspan="5" bgcolor="gainsboro">NGƯỜI LẬP: Nguyễn Đức Mạnh</th>
+            </tr>
+            <tr>
+                <th colspan="5">
+                <button type="submit" value="Tính toán"> Tính toán </button> <button onclick="history.go(0)"> Bài mới </button>
+                </th>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
